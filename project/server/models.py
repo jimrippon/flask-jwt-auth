@@ -75,7 +75,7 @@ class BlacklistToken(db.Model):
         self.token = token
         self.blacklisted_on = datetime.datetime.utcnow()
 
-    def __repl__(self):
+    def __repr__(self):
         return '<id: token: {}'.format(self.token)
 
     @staticmethod

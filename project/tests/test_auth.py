@@ -65,6 +65,18 @@ class TestAuthBlueprint(BaseTestCase):
         self.assertTrue(isinstance(auth_token, bytes))
         self.assertTrue(user.decode_auth_token(auth_token.decode("utf-8")) == 1)
 
+    def test_invalid_auth_token(self):
+        """ Test the decode_auth_token function with an invalid token """
+        user = User(
+            email='joe@example.com',
+            password='$ecr3tC0d3'
+        )
+        db.session.add(user)
+        db.session.commit()
+        auth_token = "ew0KICAiYWxnIjogIkhTMjU2IiwNCiAgInR5cCI6ICJKV1QiDQp9.ew0KICAiZW1waWQiOiAiMDAwMSIsDQogICJlbWFpbCI6ICJwcmF2ZWVuLnJAZ21haWwuY29tIiwNCiAgImZpcnN0bmFtZSI6ICJwcmF2ZWVuIiwNCiAgImxhc3RuYW1lIjogInIiLA0KICAic3ViIjogInByYXZlZW4uciIsDQogICJhdWQiOiAiaHR0cDovL3ByYXZlZW5yZW5nYXJhamFuLmNvbSIsDQogICJyb2xlcyI6ICJ7fSIsDQogICJuYmYiOiAxNTM3MzU2NDUzLA0KICAiZXhwIjogMTUzNzk2MTI1MywNCiAgImlhdCI6IDE1MzczNTY0NTMsDQogICJpc3MiOiAiaHR0cHM6Ly9wcmF2ZWVucmVuZ2FyYWphbi5jb20iDQp9.Gurbz9eHisFgydIw-XuoaNXO38z4z9AOr5BBdqg0fWw".encode('utf-8')
+        self.assertTrue(isinstance(auth_token, bytes))
+        self.assertTrue(user.decode_auth_token(auth_token.decode('utf-8')) == 'Invalid token.  Please log in again.')
+
     def test_registered_with_already_registered_user(self):
         """ Test registration with already registered email """
         user = User(
