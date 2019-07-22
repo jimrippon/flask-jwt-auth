@@ -2,13 +2,13 @@
 
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
-postgres_local_base = 'postgresql://postgres:@localhost/'
-database_name = 'something'
+postgres_local_base = 'postgresql://postgres:ChangeMe123@localhost/'
+database_name = 'flask_jwt_auth'
 
 
 class BaseConfig:
     """Base configuration."""
-    SECRET_KEY = 'my_precious'
+    SECRET_KEY = os.getenv('SECRET_KEY', 'm0sS!&r6K*f@WESM8cIz')
     DEBUG = False
     BCRYPT_LOG_ROUNDS = 13
     SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -32,6 +32,7 @@ class TestingConfig(BaseConfig):
 
 class ProductionConfig(BaseConfig):
     """Production configuration."""
-    SECRET_KEY = 'my_precious'
+    SECRET_KEY = os.getenv('SECRET_KEY', 'hwm3QBm^WM&%v!0lxga7')
+    #SECRET_KEY = 'my_precious'
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = 'postgresql:///example'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://' + os.getenv('PG_USER', 'postgres') + ':' + os.getenv('PG_PASSWORD', 'ChangeMe123') + '@' + os.getenv('PG_HOST', 'localhost') + '/' + os.getenv('PG_DB', database_name)
