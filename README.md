@@ -1,6 +1,6 @@
 # Flask JWT Auth
 
-[![Build Status](https://travis-ci.org/realpython/flask-jwt-auth.svg?branch=master)](https://travis-ci.org/realpython/flask-jwt-auth)
+[![Build Status](https://travis-ci.org/jimrippon/flask-jwt-auth.svg?branch=jwt-auth)](https://travis-ci.org/jimrippon/flask-jwt-auth)[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1f487840dab140b1a36a6682bc48b8e0)](https://www.codacy.com/app/jimrippon/flask-jwt-auth?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jimrippon/flask-jwt-auth&amp;utm_campaign=Badge_Grade)
 
 ## Quick Start
 
