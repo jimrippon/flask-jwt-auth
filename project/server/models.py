@@ -86,4 +86,3 @@ class BlacklistToken(db.Model):
             return True
         else:
             return False
-
